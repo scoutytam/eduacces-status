@@ -28,7 +28,7 @@ body{background:#f0ede8;color:#1c1814}
 .can{font-size:10px;background:#f0ede8;border:1px solid #ddd8d0;border-radius:12px;padding:2px 7px;color:#8a8078;margin-left:4px;font-weight:600}
 .dots{display:flex;gap:4px;margin-left:auto;align-items:center}
 .dot{width:10px;height:10px;border-radius:50%}
-.dg{background:#40c97a}.da{background:#f4c430}.dz{background:#ddd}
+.dg{background:#40c97a}.da{background:#f4c430}.dz{background:#ddd}.db{background:#4a9eff;opacity:.6}
 .cv{font-size:11px;color:#8a8078;margin-left:8px;transition:transform .2s}
 .card.op .cv{transform:rotate(180deg)}
 .cb{display:none;padding:0 16px 16px}
@@ -36,6 +36,8 @@ body{background:#f0ede8;color:#1c1814}
 .cg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .cw{grid-column:1/-1;padding:12px 14px;border-radius:8px;background:#f0ede8}
 .ci{padding:10px 12px;border-radius:8px;background:#f0ede8}
+.ci.tut{border:1px solid #ddeeff;background:#ddeeff}
+.ci.tut .ci-n{color:#1a4f8a}
 .ci-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
 .ci-n{font-size:10px;font-weight:800;color:#8a8078;text-transform:uppercase;letter-spacing:.4px}
 .ci-v{font-size:14px;font-weight:900}
@@ -43,6 +45,7 @@ body{background:#f0ede8;color:#1c1814}
 .ci-f{height:100%;border-radius:99px}
 .fok{background:linear-gradient(90deg,#1e6b45,#40c97a)}
 .fpr{background:linear-gradient(90deg,#8a6200,#f4c430)}
+.ftu{background:linear-gradient(90deg,#1a4f8a,#4a9eff);opacity:.7}
 .ci-t{font-size:10px;font-weight:600}
 .trow{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}
 .tp{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;white-space:nowrap}
@@ -85,7 +88,7 @@ function rnd(){
     var gdot=s.gs_ok?"dg":s.grup_suport>0?"da":"dz";
     var cdot=s.con_ok?"dg":s.consiliere>0?"da":"dz";
     var mdot=s.men_ok?"dg":s.mentorat>0?"da":"dz";
-    var tdot=s.tutorat>=8?"dg":s.tutorat>0?"da":"dz";
+    var tdot=s.tutorat>0?"db":"dz";
     var dots="<span class='dot "+wdot+"' title='Workshop: "+s.w_nr_complete+"/6'></span>"
              +"<span class='dot "+gdot+"' title='Grup suport: "+s.grup_suport+"/2'></span>"
              +"<span class='dot "+cdot+"' title='Consiliere: "+s.consiliere+"/2'></span>"
@@ -139,15 +142,12 @@ function rnd(){
       +"<div class='ci-b'><div class='ci-f "+m_fc+"' style='width:"+Math.round(m_pct*100)+"%'></div></div>"
       +"<div class='ci-t' style='"+m_ns+"'>"+m_note+"</div></div>";
     var t_pct=s.tutorat/8;if(t_pct>1)t_pct=1;
-    var t_fc=s.tutorat>=8?"fok":s.tutorat>0?"fpr":"";
-    var t_ns=s.tutorat>=8?"color:#1e6b45;font-weight:700":s.tutorat>0?"color:#8a6200":"color:#bbb";
-    var t_note=s.tutorat>=8?"obiectiv atins":s.tutorat>0?"in progres - mai raman "+(8-s.tutorat):"nicio activitate";
-    var tcard="<div class='ci'>"
+    var tcard="<div class='ci tut'>"
       +"<div class='ci-h'><span class='ci-n'>Tutorat</span>"
-      +"<span class='ci-v' style='color:"+pcolor(s.tutorat,8)+"'>"+s.tutorat
-      +"<span style='font-size:10px;font-weight:600;color:#aaa'>/8</span></span></div>"
-      +"<div class='ci-b'><div class='ci-f "+t_fc+"' style='width:"+Math.round(t_pct*100)+"%'></div></div>"
-      +"<div class='ci-t' style='"+t_ns+"'>"+t_note+"</div></div>";
+      +"<span class='ci-v' style='color:#1a4f8a'>"+s.tutorat
+      +"<span style='font-size:10px;font-weight:600;color:#8a9ab0'>/8</span></span></div>"
+      +"<div class='ci-b'><div class='ci-f ftu' style='width:"+Math.round(t_pct*100)+"%'></div></div>"
+      +"<div class='ci-t' style='color:#1a4f8a'>"+s.tutorat+" intalniri inregistrate</div></div>";
     h+="<div class='card' id='c"+s.id+"'>"
       +"<div class='ch' onclick='tog(\""+s.id+"\")'>" 
       +"<div style='flex:1;min-width:0'><div class='cid'>"+s.id+" <span class='can'>"+s.an_studiu+"</span></div>"
