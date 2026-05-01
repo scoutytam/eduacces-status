@@ -213,10 +213,10 @@ function rnd(){
     var s_ns=s.sub_ok?"color:#1e6b45;font-weight:700":s.sub>0?"color:#8a6200":"color:#bbb";
     var s_note=s.sub_ok?"conditie indeplinita":s.sub>0?"in curs - "+s.sub+" luni acordate":"nicio subventie acordata";
     var scard="<div class='ci'>"
-      +"<div class='ci-h'>< span class='ci-n'>Subventii acordate</span>"
+      +"<div class='ci-h'><span class='ci-n'>Subventii acordate</span>"
       +"<span class='ci-v' style='color:"+pc(s.sub,6)+"'>"+s.sub
-      +"<span style='font-size:10px;font-weight:600;color:#aaa'>/ 6 min</span></span></div>"
-      +"<div class='ci-b'>< div class='ci-f "+s_fc+"' style='width:"+s_pct+"%'>< /div></div>"
+      +"<span style='font-size:10px;font-weight:600;color:#aaa'>/6 min</span></span></div>"
+      +"<div class='ci-b'><div class='ci-f "+s_fc+"' style='width:"+s_pct+"%'></div></div>"
       +"<div class='ci-t' style='"+s_ns+"'>"+s_note+"</div></div>";
     h+="<div class='card' id='c"+s.id+"'>"
       +"<div class='ch' onclick='tog(\""+s.id+"\")'>" 
